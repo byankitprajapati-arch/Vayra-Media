@@ -555,9 +555,9 @@ function initChartAnimation() {
     // ─── DELIVERY TIME ───
     if (matches(msg, ['how long','time','delivery','deliver','days','weeks','duration','deadline','timeline','when will','kab tak','kitna time','fast','quick','urgent','jaldi'])) {
       return pick([
-        `${n}great question! Here's a rough idea:\n\n🌐 Website — 5 to 7 working days for a complete, polished site\n📍 Google Maps setup — 2 to 3 days to get you listed and optimized\n📱 Social media — we start posting within 3-4 days of onboarding\n🤖 AI automation — 5 to 7 days depending on complexity\n\nOf course, if you need something urgent, we can work with tighter timelines too. Just let us know your situation 💪`,
-        `${n}we move fast! Typical timelines:\n\n• Full website: 5-7 working days\n• Google Maps optimization: 2-3 days\n• Social media kickoff: 3-4 days\n• AI chatbot/automation: about a week\n\nWe don't drag projects for months like some agencies do. Once we start, we deliver on time — period ⚡\n\nWhat are you looking to get done?`,
-        `${n}depends on the service, but we're pretty quick:\n\nWebsites take about 5-7 days from start to finish. Google Maps can be done in 2-3 days. Social media management starts within the first week.\n\nWe know time matters when you're running a business, so we don't waste it. Need something done ASAP? Let's talk — fill the form below 🚀`
+        `${n}great question! Here's a rough idea:\n\n🌐 Website — 5 to 7 working days for a complete, polished site\n📍 Google Maps setup — 2 to 3 days to get you listed and optimized\n🤖 AI automation — 5 to 7 days depending on complexity\n\nOf course, if you need something urgent, we can work with tighter timelines too. Just let us know your situation 💪`,
+        `${n}we move fast! Typical timelines:\n\n• Full website: 5-7 working days\n• Google Maps optimization: 2-3 days\n• AI chatbot/automation: about a week\n\nWe don't drag projects for months like some agencies do. Once we start, we deliver on time — period ⚡\n\nWhat are you looking to get done?`,
+        `${n}depends on the service, but we're pretty quick:\n\nWebsites take about 5-7 days from start to finish. Google Maps can be done in 2-3 days. AI automation systems within a week.\n\nWe know time matters when you're running a business, so we don't waste it. Need something done ASAP? Let's talk — fill the form below 🚀`
       ]);
     }
 
@@ -575,14 +575,6 @@ function initChartAnimation() {
       return pick([
         `${n}Google Maps is probably the most underrated growth tool for local businesses. Here's why:\n\nWhen someone types "gym near me" or "best salon in [city]" — if you're not showing up, that customer goes to your competitor. Simple as that.\n\nWhat we do:\n📍 Set up or optimize your Google Business Profile\n⭐ Help you get more reviews (this is huge for ranking)\n📸 Add professional photos and posts\n📊 Track how many people find you each month\n\nSetup takes just 2-3 days. And the results? You'll start seeing more calls and walk-ins within weeks.\n\nDo you already have a Google listing, or starting fresh?`,
         `${n}let me put it this way — 90% of people Google a business before visiting it. If your business doesn't show up on Maps, you're basically invisible to all those potential customers.\n\nWe handle the full Google Maps setup:\n✅ Profile creation and verification\n✅ Business description, categories, hours\n✅ Photos and regular posts\n✅ Review generation strategy\n✅ Local SEO so you rank higher than competitors\n\nAll done in 2-3 days. This single service has literally doubled footfall for some of our clients 📈\n\nWhat type of business do you run?`
-      ]);
-    }
-
-    // ─── SOCIAL MEDIA (detailed) ───
-    if (matches(msg, ['social media','instagram','facebook','insta','fb','social','reels','content','posting','followers','linkedin','youtube','post','posts'])) {
-      return pick([
-        `${n}social media done right can transform your business. Here's what we handle:\n\n📱 Content creation — professional graphics, reels, stories\n📅 Consistent posting — we plan and post regularly so your page stays active\n💬 Engagement — responding to comments, building community\n📊 Growth strategy — targeted content that attracts YOUR customers\n\nWe cover Instagram, Facebook, LinkedIn — wherever your audience is.\n\nThe best part? You don't have to think about it. We handle everything while you run your business.\n\nAre you active on social media right now, or starting from scratch?`,
-        `${n}most businesses post once in a while and wonder why they're not growing on social media. The secret? Consistency and quality.\n\nWe take over your social media completely:\n• Design branded posts and reels\n• Write engaging captions\n• Post on schedule (3-5x per week)\n• Handle comments and DMs\n• Monthly performance reports\n\nWe start within 3-4 days of onboarding. Your brand will look like a premium business online within the first month 🔥\n\nWhich platforms are you most interested in?`
       ]);
     }
 
@@ -613,8 +605,8 @@ function initChartAnimation() {
     // ─── SERVICES GENERAL ───
     if (matches(msg, ['service','services','what do you','what you do','what can you','offerings','offer','help me','kya karte'])) {
       return pick([
-        `${n}we help local businesses go digital and actually grow. Here's the full menu:\n\n🌐 Website Development — custom sites, delivered in 5-7 days\n📍 Google Maps & Local SEO — get found locally in 2-3 days\n📱 Social Media Management — content, posting, growth\n🤖 AI Automation — chatbots, auto-replies, lead capture\n🎨 Brand Identity — logo, colors, complete visual system\n📊 Analytics & Reporting — track your growth monthly\n\nMost clients start with a website + Google Maps combo — that alone brings in a ton of new customers.\n\nWhat sounds most useful for your business?`,
-        `${n}we basically take your offline business and build its entire online presence:\n\n1️⃣ Professional website (5-7 days)\n2️⃣ Google Maps visibility (2-3 days)\n3️⃣ Social media management (ongoing)\n4️⃣ AI automation tools (5-7 days)\n5️⃣ Brand design & identity\n6️⃣ Monthly performance tracking\n\nYou can pick individual services or go for a full package — whatever fits your goals and budget.\n\nWhat's your biggest pain point right now? Let me point you to the right service 🎯`
+        `${n}we help local businesses go digital and actually grow. Here's the full menu:\n\n🌐 Website Development — custom sites, delivered in 5-7 days\n📍 Google Maps & Local SEO — get found locally in 2-3 days\n🤖 AI Automation — chatbots, auto-replies, lead capture\n🎨 Brand Identity — logo, colors, complete visual system\n📊 Analytics & Reporting — track your growth monthly\n\nMost clients start with a website + Google Maps combo — that alone brings in a ton of new customers.\n\nWhat sounds most useful for your business?`,
+        `${n}we basically take your offline business and build its entire online presence:\n\n1️⃣ Professional website (5-7 days)\n2️⃣ Google Maps visibility (2-3 days)\n3️⃣ AI automation tools (5-7 days)\n4️⃣ Brand design & identity\n5️⃣ Monthly performance tracking\n\nYou can pick individual services or go for a full package — whatever fits your goals and budget.\n\nWhat's your biggest pain point right now? Let me point you to the right service 🎯`
       ]);
     }
 
@@ -681,15 +673,15 @@ function initChartAnimation() {
     if (matches(msg, ['gym','salon','restaurant','cafe','shop','store','retail','clinic','doctor','dentist','hotel','coaching','institute','school','bakery','boutique','fitness','spa','parlour','parlor','medical','hospital','pharmacy','jewellery','jewelry','real estate'])) {
       const biz = msg.match(/(gym|salon|restaurant|cafe|shop|store|retail|clinic|doctor|dentist|hotel|coaching|institute|school|bakery|boutique|fitness|spa|parlour|parlor|medical|hospital|pharmacy|jewellery|jewelry|real estate)/i)?.[0] || 'that';
       return pick([
-        `${n}nice, a ${biz}! We've worked with similar businesses and here's what works best:\n\n🌐 A clean, professional website (5-7 days) — so people can find you online and see what you offer\n📍 Google Maps setup (2-3 days) — so when people search "${biz} near me" you show up first\n📱 Social media presence — build trust and attract followers\n\nThis combo alone has helped businesses like yours double their walk-ins within a month.\n\nWant to know more about any of these? Or should I connect you with our team for a detailed plan?`,
-        `${n}a ${biz} — great! There's massive potential to grow a ${biz} digitally.\n\nMost ${biz} owners we've worked with didn't have any online presence before. Once we set up their website + Google Maps + social media, they started getting new customers they never would have reached before.\n\nAnd the best part? Everything can be up and running within a week.\n\nWhat's your main goal — more customers, better brand image, or both? 🎯`
+        `${n}nice, a ${biz}! We've worked with similar businesses and here's what works best:\n\n🌐 A clean, professional website (5-7 days) — so people can find you online and see what you offer\n📍 Google Maps setup (2-3 days) — so when people search "${biz} near me" you show up first\n🤖 AI Lead Automation — capture 24/7 lead inquiries\n\nThis combo alone has helped businesses like yours double their walk-ins within a month.\n\nWant to know more about any of these? Or should I connect you with our team for a detailed plan?`,
+        `${n}a ${biz} — great! There's massive potential to grow a ${biz} digitally.\n\nMost ${biz} owners we've worked with didn't have any online presence before. Once we set up their website + Google Maps + AI automation, they started getting new customers they never would have reached before.\n\nAnd the best part? Everything can be up and running within a week.\n\nWhat's your main goal — more customers, better brand image, or both? 🎯`
       ]);
     }
 
     // ─── YES / INTERESTED ───
     if (matches(msg, ['yes','yeah','yep','sure','okay','ok','interested','tell me more','go ahead','definitely','absolutely','haan','ji'])) {
       return pick([
-        `${n}awesome! 🙌 So which of these would help your business most?\n\n🌐 Professional website\n📍 Google Maps visibility\n📱 Social media management\n🤖 AI automation\n\nOr if you want the full package, we can do that too! Just tell me what matters most to you right now.`,
+        `${n}awesome! 🙌 So which of these would help your business most?\n\n🌐 Professional website\n📍 Google Maps visibility\n🤖 AI automation\n\nOr if you want the full package, we can do that too! Just tell me what matters most to you right now.`,
         `${n}love the energy! 🔥 What's your biggest challenge right now?\n\n• Not enough customers finding you?\n• No online presence at all?\n• Want to look more professional online?\n• Need to automate repetitive tasks?\n\nTell me and I'll suggest exactly what to start with.`
       ]);
     }
