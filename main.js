@@ -840,3 +840,51 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+// ─── STATS COUNT-UP ANIMATION ─────────────────────────────────
+(function initCounterAnimation() {
+  const statElements = document.querySelectorAll('.astat-num[data-target], [data-counter]');
+  if (!statElements.length) return;
+
+  const animateCounter = (el) => {
+    if (el.classList.contains('counted')) return;
+
+    const targetVal = parseFloat(el.getAttribute('data-target'));
+    if (isNaN(targetVal)) return;
+
+    el.classList.add('counted');
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    const duration = 1800; // ms
+    const startTime = performance.now();
+
+    function updateCount(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      const currentVal = (targetVal * easeProgress).toFixed(decimals);
+
+      el.textContent = `${prefix}${currentVal}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        el.textContent = `${prefix}${targetVal.toFixed(decimals)}${suffix}`;
+      }
+    }
+
+    requestAnimationFrame(updateCount);
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  statElements.forEach(el => observer.observe(el));
+})();
+
