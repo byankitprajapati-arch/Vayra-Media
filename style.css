@@ -2455,6 +2455,7 @@ select.form-input option {
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+  pointer-events: none; /* WRAPPER ALLOWS ALL TOUCHES TO PASS THROUGH TO PAGE CONTENT */
 }
 
 .chat-launcher {
@@ -2463,7 +2464,7 @@ select.form-input option {
   border-radius: 50%;
   background: var(--brand-grad);
   border: none;
-  cursor: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2472,6 +2473,7 @@ select.form-input option {
   position: relative;
   flex-shrink: 0;
   transition: transform 0.2s;
+  pointer-events: auto; /* LAUNCHER BUTTON RECEIVES TOUCHES */
 }
 
 .chat-launcher:hover {
@@ -2515,6 +2517,7 @@ select.form-input option {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Chat Panel */
@@ -2532,12 +2535,14 @@ select.form-input option {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none; /* CLOSED PANEL DOES NOT INTERCEPT TOUCHES */
 }
 
 .chat-panel.open {
   transform: scale(1) translateY(0);
   opacity: 1;
   visibility: visible;
+  pointer-events: auto; /* OPEN PANEL RECEIVES TOUCHES */
 }
 
 .chat-header {
@@ -3878,6 +3883,7 @@ html.lenis body {
   z-index: 9990;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none; /* DOES NOT BLOCK PAGE TOUCHES WHEN HIDDEN */
   transform: translateY(20px);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 8px 24px rgba(0, 198, 255, 0.2);
@@ -3887,6 +3893,7 @@ html.lenis body {
 .back-to-top.visible {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto; /* RECEIVES TOUCHES ONLY WHEN VISIBLE */
   transform: translateY(0);
 }
 
