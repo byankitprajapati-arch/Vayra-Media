@@ -3211,12 +3211,15 @@ body {
 .agency-stats-bar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 24px;
-  background: rgba(8, 16, 40, 0.6);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-top: 36px;
+  gap: 24px;
+  max-width: 900px;
+  margin: 44px auto 0;
+  padding: 32px 40px;
+  background: rgba(6, 12, 32, 0.75);
+  border: 1px solid rgba(0, 198, 255, 0.22);
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 198, 255, 0.08);
+  backdrop-filter: blur(20px);
   text-align: center;
 }
 
@@ -3224,21 +3227,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .astat-num {
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 800;
-  background: var(--brand-grad);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #00c6ff;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 20px rgba(0, 198, 255, 0.35);
+  line-height: 1.1;
 }
 
 .astat-label {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-secondary);
   font-weight: 500;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .agency-stats-bar {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 20px;
+  }
 }
 
 /* ─── SERVICE FEATURE LIST ───────────────── */
