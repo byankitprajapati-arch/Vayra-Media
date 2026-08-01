@@ -2418,11 +2418,29 @@ select.form-input option {
 }
 
 .footer-bottom {
-  text-align: center;
-  padding: 20px 24px;
+  position: relative;
+  z-index: 20;
+  padding: 24px 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 13px;
   color: var(--text-muted);
+  background: var(--bg-primary);
+}
+
+.footer-bottom-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
 }
 
 /* ═══════════════════════════════════
@@ -2929,6 +2947,16 @@ select.form-input option {
   .footer-container {
     grid-template-columns: 1fr;
     padding: 48px 20px 32px;
+  }
+
+  .footer-bottom {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
   }
 
   .hero-btns {
@@ -3766,20 +3794,43 @@ html.lenis body {
 }
 
 .footer-bottom-links {
-  display: inline-flex;
-  gap: 16px;
-  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 30;
 }
 
-.footer-bottom-links a {
-  color: var(--cyan);
+.footer-bottom-link {
+  color: var(--cyan) !important;
   text-decoration: none;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px; /* Touch target standard for mobile */
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 198, 255, 0.25);
+  touch-action: manipulation;
 }
 
-.footer-bottom-links a:hover {
-  color: #fff;
+.footer-bottom-link:hover,
+.footer-bottom-link:focus-visible,
+.footer-bottom-link:active {
+  color: #ffffff !important;
+  background: rgba(0, 198, 255, 0.12);
   text-decoration: underline;
+}
+
+.footer-link-sep {
+  color: var(--text-muted);
+  user-select: none;
+  font-size: 12px;
 }
 
 /* ═══════════════════════════════════
