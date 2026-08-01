@@ -370,8 +370,26 @@ function initChartAnimation() {
 
   if (!form) return;
 
+  const phoneInput = document.getElementById('phone');
+
+  phoneInput?.addEventListener('input', () => {
+    phoneInput.classList.remove('invalid');
+  });
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    // Client-side phone validation
+    const rawPhone = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+    if (rawPhone.length < 10) {
+      if (phoneInput) {
+        phoneInput.classList.add('invalid');
+        phoneInput.focus();
+      }
+      alert('Please enter a valid 10-digit phone/WhatsApp number.');
+      return;
+    }
+
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
@@ -773,13 +791,52 @@ function initChartAnimation() {
   document.head.appendChild(style);
 })();
 
-// ─── SMOOTH SCROLL FOR ANCHORS ───────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// ─── BACK TO TOP BUTTON CONTROLLER ──────────────────────────
+(function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    if (window.lenis) {
+      window.lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
+})();
+
+// ─── COOKIE & PRIVACY CONSENT BANNER ──────────────────────────
+(function initCookieBanner() {
+  const banner = document.getElementById('cookieBanner');
+  const acceptBtn = document.getElementById('acceptCookies');
+  if (!banner || !acceptBtn) return;
+
+  if (!localStorage.getItem('vayra_cookie_consent')) {
+    setTimeout(() => banner.classList.add('visible'), 1500);
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    localStorage.setItem('vayra_cookie_consent', 'true');
+    banner.classList.remove('visible');
+  });
+})();
+
+// ─── GLOBAL ESCAPE KEY LISTENER ──────────────────────────────
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const chatPanel = document.getElementById('chatPanel');
+    if (mobileOverlay?.classList.contains('open')) {
+      mobileOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    if (chatPanel?.classList.contains('open')) {
+      chatPanel.classList.remove('open');
+    }
+  }
 });
+
