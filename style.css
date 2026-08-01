@@ -468,11 +468,30 @@ body::after {
   }
 }
 
+.nav-brand-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-text-white {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
 .nav-brand-text {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 22px;
   font-weight: 800;
   letter-spacing: 0.06em;
+  background: var(--brand-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-links {
