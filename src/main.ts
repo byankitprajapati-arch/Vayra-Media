@@ -1,3 +1,12 @@
+import './style.css';
+
+declare global {
+  interface Window {
+    lenis?: any;
+  }
+}
+declare const Lenis: any;
+
 /* ═══════════════════════════════════════════════════
    VAYRA MEDIA — MAIN JAVASCRIPT
    ═══════════════════════════════════════════════════ */
@@ -60,7 +69,7 @@
 
   // Smooth scroll for all internal anchor links
   document.addEventListener('click', (e) => {
-    const anchor = e.target.closest('a[href^="#"]');
+    const anchor = (e.target as HTMLElement)?.closest('a[href^="#"]');
     if (!anchor) return;
     const href = anchor.getAttribute('href');
     if (href && href !== '#' && document.querySelector(href)) {
@@ -73,10 +82,10 @@
 // ─── PACKAGE SELECT HANDLER ─────────────────────────────────
 (function initPackageSelection() {
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.btn-select-package');
+    const btn = (e.target as HTMLElement)?.closest('.btn-select-package');
     if (!btn) return;
     const pkg = btn.getAttribute('data-package');
-    const selectEl = document.getElementById('businessType');
+    const selectEl = document.getElementById('businessType') as HTMLSelectElement | null;
     if (selectEl && pkg) {
       for (let i = 0; i < selectEl.options.length; i++) {
         if (selectEl.options[i].text.includes(pkg) || selectEl.options[i].value.includes(pkg)) {
@@ -119,7 +128,7 @@
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+      if (window.scrollY >= (sec as HTMLElement).offsetTop - 120) current = sec.id;
     });
     navLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === '#' + current);
@@ -170,15 +179,15 @@
 
 // ─── NETWORK CANVAS ──────────────────────────────────────────
 (function initNetworkCanvas() {
-  const canvas = document.getElementById('networkCanvas');
+  const canvas = document.getElementById('networkCanvas') as HTMLCanvasElement | null;
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let W, H, nodes, anim;
+  let W: number, H: number, nodes: any[], anim: any;
 
   function resize() {
-    const wrap = canvas.parentElement;
-    W = canvas.width = wrap.offsetWidth;
-    H = canvas.height = wrap.offsetHeight;
+    const wrap = canvas!.parentElement as HTMLElement;
+    W = canvas!.width = wrap.offsetWidth;
+    H = canvas!.height = wrap.offsetHeight;
     buildNodes();
   }
 
@@ -277,17 +286,18 @@
 
       cards.forEach(card => {
         const cat = card.getAttribute('data-category') || '';
+        const cardEl = card as HTMLElement;
         if (filter === 'all' || cat.includes(filter)) {
-          card.style.display = 'flex';
+          cardEl.style.display = 'flex';
           setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1)';
+            cardEl.style.opacity = '1';
+            cardEl.style.transform = 'translateY(0) scale(1)';
           }, 50);
         } else {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.95)';
+          cardEl.style.opacity = '0';
+          cardEl.style.transform = 'scale(0.95)';
           setTimeout(() => {
-            card.style.display = 'none';
+            cardEl.style.display = 'none';
           }, 300);
         }
       });
@@ -357,20 +367,20 @@ function initChartAnimation() {
   toggle.addEventListener('click', () => {
     isOnetime = !isOnetime;
     toggle.classList.toggle('active', isOnetime);
-    monthlyPrices.forEach(p => p.style.display = isOnetime ? 'none' : '');
-    onetimePrices.forEach(p => p.style.display = isOnetime ? '' : 'none');
+    monthlyPrices.forEach(p => (p as HTMLElement).style.display = isOnetime ? 'none' : '');
+    onetimePrices.forEach(p => (p as HTMLElement).style.display = isOnetime ? '' : 'none');
   });
 })();
 
 // ─── CONTACT FORM ────────────────────────────────────────────
 (function initContactForm() {
-  const form = document.getElementById('contactForm');
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
   const result = document.getElementById('formSuccess');
-  const submitBtn = document.getElementById('submitBtn');
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
 
   if (!form) return;
 
-  const phoneInput = document.getElementById('phone');
+  const phoneInput = document.getElementById('phone') as HTMLInputElement | null;
 
   phoneInput?.addEventListener('input', () => {
     phoneInput.classList.remove('invalid');
@@ -394,9 +404,11 @@ function initChartAnimation() {
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Sending...';
-    submitBtn.disabled = true;
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.innerHTML = 'Sending...';
+      submitBtn.disabled = true;
+    }
 
     fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -410,9 +422,9 @@ function initChartAnimation() {
         let data = await response.json();
         if (response.status == 200) {
             form.reset();
-            result.classList.add('visible');
+            result?.classList.add('visible');
             setTimeout(() => {
-                result.classList.remove('visible');
+                result?.classList.remove('visible');
             }, 5000);
         } else {
             console.log(response);
@@ -424,8 +436,10 @@ function initChartAnimation() {
         alert("Something went wrong! Please try again later.");
     })
     .finally(() => {
-        submitBtn.innerHTML = originalBtnText;
-        submitBtn.disabled = false;
+        if (submitBtn) {
+          submitBtn.innerHTML = originalBtnText;
+          submitBtn.disabled = false;
+        }
     });
   });
 })();
@@ -764,11 +778,12 @@ function initChartAnimation() {
 
   // Input send
   async function handleSend() {
-    const msg = input.value.trim();
+    const inputEl = input as HTMLInputElement;
+    const msg = inputEl ? inputEl.value.trim() : '';
     if (!msg) return;
-    input.value = '';
+    if (inputEl) inputEl.value = '';
     addMessage(msg, 'user');
-    quickReplies.style.display = 'none';
+    if (quickReplies) (quickReplies as HTMLElement).style.display = 'none';
     await sendGeminiMessage(msg);
   }
 
@@ -887,4 +902,5 @@ window.addEventListener('keydown', (e) => {
 
   statElements.forEach(el => observer.observe(el));
 })();
+
 
