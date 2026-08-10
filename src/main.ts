@@ -578,9 +578,9 @@ function initChartAnimation() {
     // ─── PRICING / COST ───
     if (matches(msg, ['price','pricing','cost','how much','charges','rate','budget','package','affordable','expensive','cheap','fee','fees','money','pay','payment','rupee','inr','₹','kitna','kharcha','paisa'])) {
       return pick([
-        `${n}honestly, I totally get wanting to know the cost upfront — but here's the thing, every business is different.\n\nA gym website is very different from a restaurant's full digital setup, right? So we always customize the plan and pricing based on what YOU actually need.\n\nThe best way? Just fill the contact form below or email us at vayraagency@outlook.com — our team will get back with a proper quote within 24 hours. No spam, promise 🤝`,
-        `${n}good question! We don't believe in one-size-fits-all pricing because that never works well for anyone.\n\nWhat we do instead — hop on a quick free call, understand your business, and then give you a custom quote that actually makes sense for your budget.\n\nJust scroll down and fill the form, or drop a mail at vayraagency@outlook.com. We reply fast! 📩`,
-        `${n}I wish I could give you a number right here, but it really depends on what services you need — website only? Full digital package? Social media?\n\nTell you what — book a free consultation (takes 2 minutes to fill the form below) and our team will send you a detailed quote within 24 hours. Zero obligation 🙌`
+        `${n}we don't provide fixed price tags online because every local business gets a custom growth strategy tailored to their exact goals!\n\nOur focus is to help you schedule a 100% free strategy consultation call. Please fill out the contact form below or reach out via WhatsApp / phone to book your free call 📞`,
+        `${n}every business gets a custom solution tailored to their specific needs (website, Google Maps, AI automation, or brand design).\n\nTo get your custom plan, please book a free 15-min strategy call by filling out the contact form below or connecting directly on WhatsApp! 🚀`,
+        `${n}we craft custom solutions based on what your business actually needs. The best first step is to book a quick, free strategy consultation!\n\nJust scroll down and fill out the contact form or click the WhatsApp button to schedule your free call with our lead strategist 🙌`
       ]);
     }
 
