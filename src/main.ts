@@ -903,31 +903,71 @@ window.addEventListener('keydown', (e) => {
   statElements.forEach(el => observer.observe(el));
 })();
 
-// ─── SERVICES "KNOW MORE" ACCORDION TOGGLE ──────────────────────
-(function initServiceKnowMoreToggle() {
+// ─── SERVICE LIGHTBOX MODAL & BLUR ENGINE ──────────────────────
+(function initServiceModal() {
+  const overlay = document.getElementById('svcModalOverlay');
+  const modal = document.getElementById('svcModal');
+  const closeBtn = document.getElementById('svcModalClose');
+  const modalImg = document.getElementById('svcModalImg') as HTMLImageElement;
+  const modalTitle = document.getElementById('svcModalTitle');
+  const modalDesc = document.getElementById('svcModalDesc');
+  const modalFeatures = document.getElementById('svcModalFeatures');
+  const modalCta = document.getElementById('svcModalCta') as HTMLAnchorElement;
+
+  if (!overlay || !modal) return;
+
+  function openModal(card: HTMLElement) {
+    const imgEl = card.querySelector('.svc-img') as HTMLImageElement;
+    const titleEl = card.querySelector('.svc-title');
+    const descEl = card.querySelector('.svc-desc');
+    const featuresEl = card.querySelector('.svc-feature-list');
+    const linkEl = card.querySelector('.svc-link') as HTMLAnchorElement;
+
+    if (modalImg && imgEl) {
+      modalImg.src = imgEl.src;
+      modalImg.alt = imgEl.alt;
+    }
+    if (modalTitle && titleEl) modalTitle.textContent = titleEl.textContent;
+    if (modalDesc && descEl) modalDesc.textContent = descEl.textContent;
+    if (modalFeatures && featuresEl) modalFeatures.innerHTML = featuresEl.innerHTML;
+
+    if (modalCta && linkEl) {
+      modalCta.href = linkEl.getAttribute('href') || '#contact';
+      modalCta.textContent = linkEl.textContent || 'Book Now →';
+    }
+
+    overlay.classList.add('active');
+    modal.classList.add('open');
+    document.body.classList.add('svc-modal-active');
+  }
+
+  function closeModal() {
+    overlay.classList.remove('active');
+    modal.classList.remove('open');
+    document.body.classList.remove('svc-modal-active');
+  }
+
+  // Open modal on "Know More" button click
   document.addEventListener('click', (e) => {
     const btn = (e.target as HTMLElement).closest('.svc-know-more-btn');
     if (!btn) return;
+    const card = btn.closest('.service-card') as HTMLElement;
+    if (card) openModal(card);
+  });
 
-    const card = btn.closest('.service-card');
-    if (!card) return;
+  // Close modal on overlay click (clicking outside the card)
+  overlay.addEventListener('click', closeModal);
 
-    const collapse = card.querySelector('.svc-details-collapse');
-    const labelSpan = btn.querySelector('span');
-    if (!collapse) return;
+  // Close modal on close button click
+  closeBtn?.addEventListener('click', closeModal);
 
-    const isOpen = collapse.classList.contains('open');
+  // Close modal on CTA click
+  modalCta?.addEventListener('click', closeModal);
 
-    if (isOpen) {
-      collapse.classList.remove('open');
-      btn.classList.remove('active');
-      btn.setAttribute('aria-expanded', 'false');
-      if (labelSpan) labelSpan.textContent = 'Know More';
-    } else {
-      collapse.classList.add('open');
-      btn.classList.add('active');
-      btn.setAttribute('aria-expanded', 'true');
-      if (labelSpan) labelSpan.textContent = 'Show Less';
+  // Close modal on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
     }
   });
 })();

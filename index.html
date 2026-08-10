@@ -936,6 +936,25 @@
     <button id="acceptCookies" class="btn-cookie-accept">Accept &amp; Continue</button>
   </div>
 
+  <!-- ═══ SERVICE LIGHTBOX MODAL & BLUR BACKDROP ═══ -->
+  <div id="svcModalOverlay" class="svc-modal-overlay" aria-hidden="true"></div>
+  <div id="svcModal" class="svc-modal glass-card" role="dialog" aria-modal="true">
+    <button id="svcModalClose" class="svc-modal-close" aria-label="Close Modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="svc-modal-img-wrap">
+      <img id="svcModalImg" src="" alt="Service Banner" class="svc-modal-img" />
+    </div>
+    <div class="svc-modal-content">
+      <h3 id="svcModalTitle" class="svc-modal-title"></h3>
+      <p id="svcModalDesc" class="svc-modal-desc"></p>
+      <ul id="svcModalFeatures" class="svc-modal-features"></ul>
+      <div class="svc-modal-footer">
+        <a id="svcModalCta" href="#contact" class="svc-modal-cta-btn">Book Now →</a>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══ LENIS BUTTER-SMOOTH SCROLL LIBRARY ═══ -->
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script type="module" src="/src/main.ts"></script>
