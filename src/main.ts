@@ -903,4 +903,34 @@ window.addEventListener('keydown', (e) => {
   statElements.forEach(el => observer.observe(el));
 })();
 
+// ─── SERVICES "KNOW MORE" ACCORDION TOGGLE ──────────────────────
+(function initServiceKnowMoreToggle() {
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as HTMLElement).closest('.svc-know-more-btn');
+    if (!btn) return;
+
+    const card = btn.closest('.service-card');
+    if (!card) return;
+
+    const collapse = card.querySelector('.svc-details-collapse');
+    const labelSpan = btn.querySelector('span');
+    if (!collapse) return;
+
+    const isOpen = collapse.classList.contains('open');
+
+    if (isOpen) {
+      collapse.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+      if (labelSpan) labelSpan.textContent = 'Know More';
+    } else {
+      collapse.classList.add('open');
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      if (labelSpan) labelSpan.textContent = 'Show Less';
+    }
+  });
+})();
+
+
 
