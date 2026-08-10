@@ -661,8 +661,8 @@ function initChartAnimation() {
     // ─── CONTACT / CONSULTATION ───
     if (matches(msg, ['contact','call','consult','consultation','book','appointment','schedule','reach','meeting','talk to','speak','connect','email','mail','phone','number'])) {
       return pick([
-        `${n}absolutely! Here are all the ways to reach us:\n\n📧 Email: vayraagency@outlook.com\n📱 WhatsApp: check the link on this page\n📝 Contact form: scroll down on this page\n\nOr just fill the form right now — takes 30 seconds. Our team will get back to you within 24 hours and set up a free consultation call.\n\nNo pressure, no hard sell. Just a genuine conversation about your business 🙌`,
-        `${n}let's connect! Easiest way:\n\n1. Scroll down and fill the contact form (takes 30 seconds)\n2. Or email us directly at vayraagency@outlook.com\n\nWe'll set up a free 30-minute call where we understand your goals and suggest the best approach. If it's a fit, great. If not, no hard feelings.\n\nLooking forward to chatting with you! 📞`
+        `${n}absolutely! Here are all the ways to reach us:\n\n📧 Email: digitalvayra@gmail.com\n📱 Phone / WhatsApp: +91 78278 13946\n📝 Contact form: scroll down on this page\n\nOr just fill the form right now — takes 30 seconds. Our team will get back to you quickly to set up a free consultation call.\n\nNo pressure, no hard sell. Just a genuine conversation about your business 🙌`,
+        `${n}let's connect! Easiest way:\n\n1. Scroll down and fill the contact form (takes 30 seconds)\n2. Or email us directly at digitalvayra@gmail.com\n3. Call or WhatsApp us at +91 78278 13946\n\nWe'll set up a free strategy call where we understand your goals and suggest the best approach. Looking forward to chatting with you! 📞`
       ]);
     }
 
