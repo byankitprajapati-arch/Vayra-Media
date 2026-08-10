@@ -1258,22 +1258,23 @@ body::after {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 8px;
+  gap: 28px;
+  margin-top: 16px;
+  align-items: start;
 }
 
 .service-card {
-  padding: 36px 32px;
-  padding-top: 0;
+  padding: 0 24px 22px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  height: auto;
 }
 
 .svc-img-wrap {
-  width: calc(100% + 64px);
-  margin: -36px -32px 0;
-  height: 200px;
+  width: calc(100% + 48px);
+  margin: 0 -24px 0;
+  height: 180px;
   border-radius: var(--radius-card) var(--radius-card) 0 0;
   overflow: hidden;
   flex-shrink: 0;
@@ -1292,23 +1293,14 @@ body::after {
   transform: scale(1.07);
 }
 
-.svc-icon {
-  font-size: 44px;
-  margin-bottom: 4px;
-  display: inline-block;
-  transition: transform 0.3s;
-}
-
-.service-card:hover .svc-icon {
-  transform: scale(1.1);
-}
-
 .svc-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 18px;
+  font-size: 17.5px;
   font-weight: 700;
   letter-spacing: -0.3px;
-  margin-top: 20px;
+  margin-top: 14px;
+  margin-bottom: 0;
+  line-height: 1.35;
 }
 
 /* Know More Toggle Button */
@@ -1320,12 +1312,13 @@ body::after {
   border: 1px solid rgba(0, 198, 255, 0.3);
   color: var(--cyan);
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
-  padding: 8px 16px;
+  padding: 7px 15px;
   border-radius: 999px;
   cursor: pointer;
-  margin-top: 4px;
+  margin-top: 2px;
+  margin-bottom: 0;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   width: fit-content;
   -webkit-tap-highlight-color: rgba(0, 198, 255, 0.2);
