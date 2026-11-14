@@ -443,8 +443,84 @@
 
       <!-- Portfolio Grid -->
       <div class="portfolio-grid" id="portfolioGrid">
-        <!-- Empty State while user provides links & screenshots -->
-        <div class="portfolio-empty-state glass-card reveal-up" id="portfolioEmptyState">
+
+        <!-- Project 1: Daya Fitness Club -->
+        <div class="portfolio-card glass-card reveal-up" data-category="gym" style="--i:0">
+          <div class="portfolio-img-wrap">
+            <img src="assets/images/portfolio/gym-daya-fitness.jpg" alt="Daya Fitness Club" class="portfolio-img" loading="lazy" />
+            <div class="portfolio-overlay">
+              <span class="portfolio-cat">GYM</span>
+              <a href="https://daya-fitness-club.vercel.app/#contact" target="_blank" rel="noopener noreferrer" class="portfolio-link-btn">Live Preview ↗</a>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tags">
+              <span class="tag-badge">GYM</span>
+              <span class="tag-badge">Fitness Platform</span>
+            </div>
+            <h3 class="portfolio-title">Daya Fitness Club</h3>
+            <p class="portfolio-desc">High-energy fitness club web platform featuring membership trial bookings, facility showcases, and integrated Google reviews.</p>
+            <div class="portfolio-result">
+              <a href="https://daya-fitness-club.vercel.app/#contact" target="_blank" rel="noopener noreferrer" class="portfolio-result-link">
+                <span>⚡ Live Site: daya-fitness-club.vercel.app</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: World Class Gym (FFL) -->
+        <div class="portfolio-card glass-card reveal-up" data-category="gym" style="--i:1">
+          <div class="portfolio-img-wrap">
+            <img src="assets/images/portfolio/gym-world-class.jpg" alt="World Class Gym - FFL" class="portfolio-img" loading="lazy" />
+            <div class="portfolio-overlay">
+              <span class="portfolio-cat">GYM</span>
+              <a href="https://world-class-gym.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link-btn">Live Preview ↗</a>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tags">
+              <span class="tag-badge">GYM</span>
+              <span class="tag-badge">Strength &amp; Conditioning</span>
+            </div>
+            <h3 class="portfolio-title">World Class Gym (FFL)</h3>
+            <p class="portfolio-desc">High-converting fitness landing page with workout class discovery, membership pricing breakdowns, and direct trial conversion funnels.</p>
+            <div class="portfolio-result">
+              <a href="https://world-class-gym.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-result-link">
+                <span>⚡ Live Site: world-class-gym.vercel.app</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Pulse Collective -->
+        <div class="portfolio-card glass-card reveal-up" data-category="gym" style="--i:2">
+          <div class="portfolio-img-wrap">
+            <img src="assets/images/portfolio/gym-pulse-collective.jpg" alt="Pulse Collective Studio" class="portfolio-img" loading="lazy" />
+            <div class="portfolio-overlay">
+              <span class="portfolio-cat">GYM</span>
+              <a href="https://pulse-collective-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link-btn">Live Preview ↗</a>
+            </div>
+          </div>
+          <div class="portfolio-info">
+            <div class="portfolio-tags">
+              <span class="tag-badge">GYM</span>
+              <span class="tag-badge">Boutique Studio</span>
+            </div>
+            <h3 class="portfolio-title">Pulse Collective Studio</h3>
+            <p class="portfolio-desc">Dynamic group fitness platform with interactive class finder, real-time schedule filtering, and seamless membership trial booking.</p>
+            <div class="portfolio-result">
+              <a href="https://pulse-collective-two.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-result-link">
+                <span>⚡ Live Site: pulse-collective-two.vercel.app</span>
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State (shown when a category has no projects yet) -->
+        <div class="portfolio-empty-state glass-card reveal-up" id="portfolioEmptyState" style="display: none;">
           <div class="portfolio-empty-icon">
             <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
@@ -452,12 +528,12 @@
               <line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
           </div>
-          <h3 class="portfolio-empty-title">Ready to Add Your Projects</h3>
+          <h3 class="portfolio-empty-title">Projects Coming Soon</h3>
           <p class="portfolio-empty-desc">
-            Categories set up: <span class="highlight-cyan">GYM</span>, <span class="highlight-cyan">Interior Design</span>, <span class="highlight-cyan">CA FIRM</span>, and <span class="highlight-cyan">Consultant</span>.
+            No projects added for this category yet.
           </p>
           <p class="portfolio-empty-sub">
-            Please share the <strong>3–4 website links and homepage screenshots</strong> for the first category (<strong>GYM</strong>) to add them here.
+            Share your website links and homepage screenshots to add them here.
           </p>
         </div>
       </div>

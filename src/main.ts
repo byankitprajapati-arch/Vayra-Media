@@ -307,10 +307,19 @@ declare const Lenis: any;
       });
 
       if (emptyState) {
-        if (cards.length === 0) {
+        if (cards.length === 0 || visibleCount === 0) {
           emptyState.style.display = 'flex';
+          const filterName = btn.textContent?.trim() || filter;
+          const descEl = emptyState.querySelector('.portfolio-empty-desc');
+          if (descEl) {
+            if (filter !== 'all') {
+              descEl.innerHTML = `No projects added for <span class="highlight-cyan">${filterName}</span> yet.`;
+            } else {
+              descEl.innerHTML = `Categories set up: <span class="highlight-cyan">GYM</span>, <span class="highlight-cyan">Interior Design</span>, <span class="highlight-cyan">CA FIRM</span>, and <span class="highlight-cyan">Consultant</span>.`;
+            }
+          }
         } else {
-          emptyState.style.display = visibleCount === 0 ? 'flex' : 'none';
+          emptyState.style.display = 'none';
         }
       }
     });
