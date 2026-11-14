@@ -898,7 +898,7 @@ window.addEventListener('keydown', (e) => {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
 
   statElements.forEach(el => observer.observe(el));
 })();
