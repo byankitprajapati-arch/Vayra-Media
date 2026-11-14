@@ -274,7 +274,60 @@ declare const Lenis: any;
 // ─── PORTFOLIO CATEGORY FILTERING ────────────────────────────
 (function initPortfolioFilter() {
   const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
+  const cards = document.querySelectorAll('.portfolio-card');
   if (!filterBtns.length) return;
+
+  function applyFilter(filter: string, btnText?: string) {
+    const emptyState = document.getElementById('portfolioEmptyState');
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cat = card.getAttribute('data-category') || '';
+      const isFeatured = card.getAttribute('data-featured') === 'true';
+      const cardEl = card as HTMLElement;
+
+      // On "All Projects", show only one representative project per category (data-featured="true").
+      // When a specific category is selected, show all projects of that category.
+      const matches = filter === 'all'
+        ? isFeatured
+        : cat.split(/\s+/).includes(filter);
+
+      if (matches) {
+        cardEl.style.display = 'flex';
+        setTimeout(() => {
+          cardEl.style.opacity = '1';
+          cardEl.style.transform = 'translateY(0) scale(1)';
+        }, 50);
+        visibleCount++;
+      } else {
+        cardEl.style.opacity = '0';
+        cardEl.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+          cardEl.style.display = 'none';
+        }, 300);
+      }
+    });
+
+    if (emptyState) {
+      if (cards.length === 0 || visibleCount === 0) {
+        emptyState.style.display = 'flex';
+        const filterName = btnText || filter;
+        const descEl = emptyState.querySelector('.portfolio-empty-desc');
+        if (descEl) {
+          if (filter !== 'all') {
+            descEl.innerHTML = `No projects added for <span class="highlight-cyan">${filterName}</span> yet.`;
+          } else {
+            descEl.innerHTML = `Categories set up: <span class="highlight-cyan">GYM</span>, <span class="highlight-cyan">Interior Design</span>, and <span class="highlight-cyan">CA FIRM &amp; Consultant</span>.`;
+          }
+        }
+      } else {
+        emptyState.style.display = 'none';
+      }
+    }
+  }
+
+  // Initial load: show 1 project per category on "All Projects"
+  applyFilter('all', 'All Projects');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -282,46 +335,7 @@ declare const Lenis: any;
       btn.classList.add('active');
 
       const filter = btn.getAttribute('data-filter') || 'all';
-      const cards = document.querySelectorAll('.portfolio-card');
-      const emptyState = document.getElementById('portfolioEmptyState');
-
-      let visibleCount = 0;
-      cards.forEach(card => {
-        const cat = card.getAttribute('data-category') || '';
-        const cardEl = card as HTMLElement;
-        const matches = filter === 'all' || cat.split(/\s+/).includes(filter);
-        if (matches) {
-          cardEl.style.display = 'flex';
-          setTimeout(() => {
-            cardEl.style.opacity = '1';
-            cardEl.style.transform = 'translateY(0) scale(1)';
-          }, 50);
-          visibleCount++;
-        } else {
-          cardEl.style.opacity = '0';
-          cardEl.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            cardEl.style.display = 'none';
-          }, 300);
-        }
-      });
-
-      if (emptyState) {
-        if (cards.length === 0 || visibleCount === 0) {
-          emptyState.style.display = 'flex';
-          const filterName = btn.textContent?.trim() || filter;
-          const descEl = emptyState.querySelector('.portfolio-empty-desc');
-          if (descEl) {
-            if (filter !== 'all') {
-              descEl.innerHTML = `No projects added for <span class="highlight-cyan">${filterName}</span> yet.`;
-            } else {
-              descEl.innerHTML = `Categories set up: <span class="highlight-cyan">GYM</span>, <span class="highlight-cyan">Interior Design</span>, and <span class="highlight-cyan">CA FIRM &amp; Consultant</span>.`;
-            }
-          }
-        } else {
-          emptyState.style.display = 'none';
-        }
-      }
+      applyFilter(filter, btn.textContent?.trim());
     });
   });
 })();
