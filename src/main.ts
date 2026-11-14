@@ -315,7 +315,7 @@ declare const Lenis: any;
             if (filter !== 'all') {
               descEl.innerHTML = `No projects added for <span class="highlight-cyan">${filterName}</span> yet.`;
             } else {
-              descEl.innerHTML = `Categories set up: <span class="highlight-cyan">GYM</span>, <span class="highlight-cyan">Interior Design</span>, <span class="highlight-cyan">CA FIRM</span>, and <span class="highlight-cyan">Consultant</span>.`;
+              descEl.innerHTML = `Categories set up: <span class="highlight-cyan">GYM</span>, <span class="highlight-cyan">Interior Design</span>, and <span class="highlight-cyan">CA FIRM &amp; Consultant</span>.`;
             }
           }
         } else {
