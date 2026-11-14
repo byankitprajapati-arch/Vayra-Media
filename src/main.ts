@@ -274,25 +274,29 @@ declare const Lenis: any;
 // ─── PORTFOLIO CATEGORY FILTERING ────────────────────────────
 (function initPortfolioFilter() {
   const filterBtns = document.querySelectorAll('.portfolio-filter-btn');
-  const cards = document.querySelectorAll('.portfolio-card');
-  if (!filterBtns.length || !cards.length) return;
+  if (!filterBtns.length) return;
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter');
+      const filter = btn.getAttribute('data-filter') || 'all';
+      const cards = document.querySelectorAll('.portfolio-card');
+      const emptyState = document.getElementById('portfolioEmptyState');
 
+      let visibleCount = 0;
       cards.forEach(card => {
         const cat = card.getAttribute('data-category') || '';
         const cardEl = card as HTMLElement;
-        if (filter === 'all' || cat.includes(filter)) {
+        const matches = filter === 'all' || cat.split(/\s+/).includes(filter);
+        if (matches) {
           cardEl.style.display = 'flex';
           setTimeout(() => {
             cardEl.style.opacity = '1';
             cardEl.style.transform = 'translateY(0) scale(1)';
           }, 50);
+          visibleCount++;
         } else {
           cardEl.style.opacity = '0';
           cardEl.style.transform = 'scale(0.95)';
@@ -301,6 +305,14 @@ declare const Lenis: any;
           }, 300);
         }
       });
+
+      if (emptyState) {
+        if (cards.length === 0) {
+          emptyState.style.display = 'flex';
+        } else {
+          emptyState.style.display = visibleCount === 0 ? 'flex' : 'none';
+        }
+      }
     });
   });
 })();
